@@ -1,0 +1,25 @@
+<div class="card text-center">
+  <div class="card-header">
+    {{propertyData.name}},<span>Building name: </span>{{propertyData.buildingName}}, <span>Tower name:
+    </span>{{propertyData.buildingTower}}
+  </div>
+  <div class="card-body d-flex">
+    <div class="image-container mr-3">
+      <img [src]="propertyData.image | secure | async" alt="unabe to fetch image">
+    </div>
+    <div class="data-container">
+      {{propertyData.description}}
+    </div>
+  </div>
+  <div class="configuration-container d-flex m-auto">
+    <div><span>Type:</span>{{' ' + propertyData.propertyType}}</div>
+    <div><span>Configuration:</span>{{' '+propertyData.configuration.name}}</div>
+    <div>{{propertyData.configuration.bedroom +' '}}<span>bedroom</span></div>
+    <div>{{propertyData.configuration.bathroom +' '}}<span>bathroom</span></div>
+    <div>{{propertyData.configuration.halfBathroom +' '}}<span>halfBathroom</span></div>
+  </div>
+  <div class="card-footer text-muted">
+    <span class="float-left">Last updated at: {{propertyData.lastUpdated}}</span> 
+    <span class="float-right"><span>Min price:</span>{{' '+propertyData.minPrice | currency:'INR'}}</span>
+  </div>
+</div>

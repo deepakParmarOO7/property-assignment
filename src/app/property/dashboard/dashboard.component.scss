@@ -1,0 +1,25 @@
+:host {
+    display: block;
+    margin-top: 2rem;
+}
+
+.property-container {
+    width: 70%;
+    max-width: 70%;
+}
+
+.no-data-found {
+    width: 70%;
+}
+
+.animate-container {
+    animation-duration: 1s;
+    animation-name: fadeIn;
+    animation-fill-mode: both;
+ }
+
+@keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+ }
+

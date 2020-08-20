@@ -1,0 +1,43 @@
+:host {
+    display: block;
+    box-shadow: 5px 10px 10px #d7d7d7;
+}
+
+.card {
+    .card-header{
+        span {
+            font-style: italic;
+            font-weight: 600;
+        }
+    }
+    .card-body {
+        .image-container {
+            width:25%;
+            max-width: 25%;
+        }
+        img {
+            height: 200px;
+            width: 150px;
+        }
+        
+        .data-container {
+            width:70%;
+            max-width: 70%;
+        }
+    }
+    .configuration-container {
+        div {
+            margin-right: 1rem;
+        }
+        span {
+            font-weight: 600;
+            font-style: italic;
+        }
+    }
+    .card-footer {
+        span {
+            font-weight: 600;
+            font-style: italic;
+        }
+    }
+}

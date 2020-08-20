@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="row d-flex">
+        <div class="w-25 mr-4 d-flex flex-column">
+            <div class="property-search">
+                <input #searchRef class="form-control" type="text" placeholder="Search" aria-label="Search" (input)="triggerSearch(searchRef.value)">     
+            </div>
+            <div *ngIf="reqProperties.length > 0" class="sort-radio mt-4">
+                <div class="custom-control custom-radio">
+                    <input type="radio" value="1" id="customRadio1" name="customRadio" checked="checked" class="custom-control-input" (change)="onPropChange()">
+                    <label class="custom-control-label" for="customRadio1">Ascending</label>
+                  </div>
+                  <div class="custom-control custom-radio">
+                    <input type="radio" value="2" id="customRadio2" name="customRadio" class="custom-control-input" (change)="onPropChange()">
+                    <label class="custom-control-label" for="customRadio2">Descending</label>
+                  </div>
+            </div>
+              <div *ngIf="reqProperties.length > 0" class="sort-drop-down mt-4">
+                <label>Sort By</label>
+                <select #selectRef class="custom-select" (change)="sortByProperty(selectRef.value)">
+                    <option selected value="1">Name</option>
+                    <option value="2">Building Name</option>
+                    <option value="3">Tower Name</option>
+                    <option value="4">Property Type</option>
+                    <option value="5">Configuration Name</option>
+                    <option value="6">Min Price</option>
+                    <option value="7">Bedroom</option>
+                    <option value="8">Bathroom</option>
+                    <option value="9">HalfBathroom</option>
+                  </select>
+              </div>
+              <div class="property-search mt-4">
+                  <label>Get properties greater than min price</label>
+                <input #minPropRef class="form-control" type="number" placeholder="Enter min price" aria-label="Search" (input)="getPropertiesGreaterThanMinPrice(minPropRef.value)">     
+            </div>
+        </div>
+        <div *ngIf="reqProperties.length > 0; else noDataFound" class="animate-container property-container d-flex flex-column">
+            <div class="mb-3" *ngFor="let property of reqProperties">
+                <app-property-container [propertyData]="property"></app-property-container>
+            </div>
+        </div>
+        <ng-template #noDataFound>
+            <div class="alert alert-danger no-data-found" role="alert">
+                No Property Found!
+              </div>
+        </ng-template>        
+    </div>
+</div>
