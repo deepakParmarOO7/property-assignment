@@ -11,7 +11,6 @@ export class DataProviderService {
 
   constructor(private readonly http: HttpClient) { }
 
-  // Fetches data from local json as some issue witrh the JWT token.
   getPropertyData(): Observable<DashboardModel[]> {
     return this.http.get<DashboardModel>(`assets/properties.json`).pipe(
       map((ele: any) => {

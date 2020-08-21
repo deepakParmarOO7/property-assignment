@@ -10,7 +10,6 @@ export class UtilityService {
   propertyConstants = PropertyConst;
   constructor() { }
 
-  // For sorting on basis of property values
   sortAccToDropdown(propertyData: DashboardModel[], requestedProp: PropertyConst, isAscending: boolean): DashboardModel[] {
     let propertyDataAfterOpr = [];
     switch (+requestedProp) {
@@ -83,7 +82,6 @@ export class UtilityService {
     return isAscending ? propertyDataAfterOpr : propertyDataAfterOpr.reverse();
   }
 
-  // For searching the data.
   searchForReqData(data: DashboardModel[], searchdata: string) {
     const originalArr = Object.assign(data);
     if (!searchdata) {
@@ -103,7 +101,19 @@ export class UtilityService {
 
   }
 
-  // Filtering the min price.
+  filterAccToRequirement(originalArr: DashboardModel[], reqData: any) {
+
+    return originalArr.filter(
+      x => reqData.bathroom.length > 0 ? reqData.bathroom.includes(x.configuration.bathroom) : originalArr
+    ).filter(
+      x => reqData.bedroom.length > 0 ? reqData.bedroom.includes(x.configuration.bedroom) : originalArr
+    ).filter(
+      x => reqData.halfBathroom.length > 0 ? reqData.halfBathroom.includes(x.configuration.halfBathroom) : originalArr
+    ).filter(
+      x => reqData.name.length > 0 ? reqData.name.includes(x.configuration.name) : originalArr
+    )
+  }
+
   getGreaterPropertiesThanMinPrice(data: DashboardModel[], price: number) {
     if (!price) {
       return data;

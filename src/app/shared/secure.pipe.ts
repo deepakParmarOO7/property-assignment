@@ -11,7 +11,6 @@ export class SecurePipe implements PipeTransform {
 
   constructor(private http: HttpClient, private sanitizer: DomSanitizer) { }
 
-  // for pushing the JWT with the images as well but JWT not working.
     transform(url): Observable<SafeUrl> {
         return this.http
             .get(url, { responseType: 'blob' })

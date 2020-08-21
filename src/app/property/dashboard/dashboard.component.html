@@ -28,6 +28,19 @@
                     <option value="9">HalfBathroom</option>
                   </select>
               </div>
+              <div class="mt-4" *ngIf="reqProperties.length > 0">
+               <label>Filter according to configuration</label>
+                <ng-multiselect-dropdown
+                [placeholder]="'Choose configuration'"
+                [settings]="dropdownSettings"
+                [data]="dropdownList"
+                [(ngModel)]="selectedItems"
+                (onSelect)="onItemSelect($event)"
+                (onSelectAll)="onSelectAll($event)"
+                (onDeSelect)="onDeSelect($event)"
+              >
+              </ng-multiselect-dropdown>
+              </div>
               <div class="property-search mt-4">
                   <label>Get properties greater than min price</label>
                 <input #minPropRef class="form-control" type="number" placeholder="Enter min price" aria-label="Search" (input)="getPropertiesGreaterThanMinPrice(minPropRef.value)">     
